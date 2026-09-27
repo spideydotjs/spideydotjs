@@ -1,96 +1,107 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="340" viewBox="0 0 600 340" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="340" viewBox="0 0 700 340" fill="none">
+  <defs>
+    <linearGradient id="winBorder" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#c084fc" stop-opacity="0.8"/>
+    </linearGradient>
+    <linearGradient id="archGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="60%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="headerGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#161b22"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+    <filter id="cyanGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
   <style>
-    .terminal {
-      font-family: 'SF Mono', 'JetBrains Mono', 'Fira Code', Monaco, Consolas, monospace;
+    .terminal-text {
+      font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'SF Mono', Consolas, 'Courier New', monospace;
       font-size: 13px;
-      fill: #c9d1d9;
+      letter-spacing: 0.2px;
     }
-    .window {
-      fill: #0d1117;
-      stroke: #30363d;
-      stroke-width: 1.5;
-      rx: 8;
-    }
-    .header {
-      fill: #161b22;
-      stroke: #30363d;
-      stroke-width: 1.5;
-    }
-    .title {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    .win-title {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       font-size: 12px;
       fill: #8b949e;
+      font-weight: 500;
       text-anchor: middle;
-    }
-    .prompt { fill: #58a6ff; font-weight: bold; }
-    .cmd { fill: #e6edf3; }
-    .cyan { fill: #39c5cf; }
-    .green { fill: #3fb950; }
-    .purple { fill: #bc8cff; }
-    .gray { fill: #8b949e; }
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
-    .cursor {
-      fill: #58a6ff;
-      animation: blink 1s step-end infinite;
     }
   </style>
 
-  <!-- Terminal Window Background -->
-  <rect x="1" y="1" width="598" height="338" rx="8" class="window" />
-  
-  <!-- Header Bar -->
-  <path d="M1 9 C 1 4.5, 4.5 1, 9 1 L 591 1 C 595.5 1, 599 4.5, 599 9 L 599 30 L 1 30 Z" class="header" />
-  <line x1="1" y1="30" x2="599" y2="30" stroke="#30363d" stroke-width="1.5" />
+  <!-- Background -->
+  <rect x="1.5" y="1.5" width="697" height="337" rx="10" fill="#090d13" stroke="url(#winBorder)" stroke-width="1.5"/>
 
-  <!-- Window Dots (Red, Yellow, Green) -->
-  <circle cx="18" cy="15" r="6" fill="#ff5f56" />
-  <circle cx="38" cy="15" r="6" fill="#ffbd2e" />
-  <circle cx="58" cy="15" r="6" fill="#27c93f" />
+  <!-- Title bar -->
+  <path d="M2 12 C 2 6.5, 6.5 2, 12 2 L 688 2 C 693.5 2, 698 6.5, 698 12 L 698 34 L 2 34 Z" fill="url(#headerGrad)"/>
+  <line x1="2" y1="34" x2="698" y2="34" stroke="#21262d" stroke-width="1"/>
 
-  <!-- Title Text -->
-  <text x="300" y="20" class="title">spideydotjs@arch:~</text>
+  <!-- Traffic Lights -->
+  <circle cx="20" cy="18" r="6" fill="#ff5f56"/>
+  <circle cx="38" cy="18" r="6" fill="#ffbd2e"/>
+  <circle cx="56" cy="18" r="6" fill="#27c93f"/>
 
-  <!-- Terminal Content -->
-  <g class="terminal" transform="translate(25, 55)">
-    <!-- Prompt Line -->
+  <!-- Window Title -->
+  <text x="350" y="22" class="win-title">spideydotjs@arch: ~ (fish)</text>
+
+  <!-- Terminal Body -->
+  <g class="terminal-text" transform="translate(28, 62)">
+    <!-- Prompt 1 -->
     <text x="0" y="0">
-      <tspan class="prompt">spideydotjs@arch</tspan><tspan class="gray">:</tspan><tspan class="prompt">~</tspan><tspan class="gray">$</tspan>
-      <tspan class="cmd"> fastfetch</tspan>
+      <tspan fill="#38bdf8" font-weight="bold">spideydotjs</tspan><tspan fill="#64748b">@</tspan><tspan fill="#818cf8" font-weight="bold">arch</tspan> <tspan fill="#34d399">~</tspan> <tspan fill="#64748b">$</tspan> <tspan fill="#f8fafc">fastfetch</tspan>
     </text>
 
-    <!-- Logo and Info Columns -->
-    <g transform="translate(0, 20)">
-      <!-- Left Column: ASCII Art -->
-      <g class="cyan" font-weight="bold">
-        <text x="0" y="20">      /\</text>
-        <text x="0" y="40">     /  \</text>
-        <text x="0" y="60">    /\   \</text>
-        <text x="0" y="80">   /  __  \</text>
-        <text x="0" y="100">  /\  (  ) \</text>
-        <text x="0" y="120"> /  \  \/  /</text>
-        <text x="0" y="140">/____\____/</text>
+    <!-- Info Section -->
+    <g transform="translate(0, 22)">
+      <!-- Arch Linux Vector Logo -->
+      <g transform="translate(8, 6) scale(5.8)" filter="url(#cyanGlow)">
+        <path fill="url(#archGradient)" d="M11.39.605C10.376 3.092 9.764 4.72 8.635 7.132c.693.734 1.543 1.589 2.923 2.554-1.484-.61-2.496-1.224-3.252-1.86C6.86 10.842 4.596 15.138 0 23.395c3.612-2.085 6.412-3.37 9.021-3.862a6.61 6.61 0 01-.171-1.547l.003-.115c.058-2.315 1.261-4.095 2.687-3.973 1.426.12 2.534 2.096 2.478 4.409a6.52 6.52 0 01-.146 1.243c2.58.505 5.352 1.787 8.914 3.844-.702-1.293-1.33-2.459-1.929-3.57-.943-.73-1.926-1.682-3.933-2.713 1.38.359 2.367.772 3.137 1.234-6.09-11.334-6.582-12.84-8.67-17.74z"/>
       </g>
+      <!-- Sub-label under logo -->
+      <text x="75" y="166" text-anchor="middle" fill="#38bdf8" font-size="10.5" font-weight="bold" letter-spacing="1">ARCH LINUX</text>
 
-      <!-- Right Column: Info -->
-      <g transform="translate(130, 0)">
-        <text x="0" y="20" class="green" font-weight="bold">Firoj Siddiquie (ソヌ)</text>
-        <text x="0" y="30" class="gray">---------------------------</text>
-        
-        <text x="0" y="55"><tspan class="purple" font-weight="bold">OS</tspan><tspan class="gray">:</tspan> Arch Linux + Hyprland (btw)</text>
-        <text x="0" y="75"><tspan class="purple" font-weight="bold">Role</tspan><tspan class="gray">:</tspan> Platform &amp; Security Engineer</text>
-        <text x="0" y="95"><tspan class="purple" font-weight="bold">Loc</tspan><tspan class="gray">:</tspan> Haryana, India</text>
-        <text x="0" y="115"><tspan class="purple" font-weight="bold">Lang</tspan><tspan class="gray">:</tspan> Go, Rust, Kotlin, TS, Java, Python</text>
-        <text x="0" y="135"><tspan class="purple" font-weight="bold">Infra</tspan><tspan class="gray">:</tspan> Kubernetes, Kafka, Docker, gRPC, eBPF, Redis</text>
-        <text x="0" y="155"><tspan class="purple" font-weight="bold">Sec</tspan><tspan class="gray">:</tspan> JA3/JA4, eBPF, ONNX inference, CTF</text>
-        <text x="0" y="175"><tspan class="purple" font-weight="bold">Focus</tspan><tspan class="gray">:</tspan> Resilient Systems, Threat Detection</text>
+      <!-- Details Column -->
+      <g transform="translate(172, 0)">
+        <text x="0" y="14">
+          <tspan fill="#38bdf8" font-weight="bold">Firoj Siddiquie</tspan> <tspan fill="#34d399">(ソヌ)</tspan>
+        </text>
+        <line x1="0" y1="23" x2="350" y2="23" stroke="#21262d" stroke-width="1"/>
+
+        <text x="0" y="44"><tspan fill="#c084fc" font-weight="bold">OS</tspan><tspan fill="#64748b">: </tspan><tspan fill="#e2e8f0">Arch Linux x86_64 </tspan><tspan fill="#64748b">(btw)</tspan></text>
+        <text x="0" y="63"><tspan fill="#c084fc" font-weight="bold">WM</tspan><tspan fill="#64748b">: </tspan><tspan fill="#e2e8f0">Hyprland </tspan><tspan fill="#64748b">(Wayland)</tspan></text>
+        <text x="0" y="82"><tspan fill="#c084fc" font-weight="bold">Role</tspan><tspan fill="#64748b">: </tspan><tspan fill="#e2e8f0">Platform &amp; Security Engineer</tspan></text>
+        <text x="0" y="101"><tspan fill="#c084fc" font-weight="bold">Langs</tspan><tspan fill="#64748b">: </tspan><tspan fill="#e2e8f0">Go · Rust · Kotlin · TypeScript · Python</tspan></text>
+        <text x="0" y="120"><tspan fill="#c084fc" font-weight="bold">Infra</tspan><tspan fill="#64748b">: </tspan><tspan fill="#e2e8f0">Kubernetes · Docker · Kafka · eBPF · Redis</tspan></text>
+        <text x="0" y="139"><tspan fill="#c084fc" font-weight="bold">Sec</tspan><tspan fill="#64748b">: </tspan><tspan fill="#e2e8f0">eBPF · JA3/4 · Threat Detection · CTF</tspan></text>
+        <text x="0" y="158"><tspan fill="#c084fc" font-weight="bold">Focus</tspan><tspan fill="#64748b">: </tspan><tspan fill="#e2e8f0">Resilient Systems &amp; Threat Detection</tspan></text>
+
+        <!-- Palette -->
+        <g transform="translate(0, 178)">
+          <rect x="0" y="0" width="22" height="10" rx="2" fill="#1e293b"/>
+          <rect x="27" y="0" width="22" height="10" rx="2" fill="#f87171"/>
+          <rect x="54" y="0" width="22" height="10" rx="2" fill="#4ade80"/>
+          <rect x="81" y="0" width="22" height="10" rx="2" fill="#facc15"/>
+          <rect x="108" y="0" width="22" height="10" rx="2" fill="#60a5fa"/>
+          <rect x="135" y="0" width="22" height="10" rx="2" fill="#c084fc"/>
+          <rect x="162" y="0" width="22" height="10" rx="2" fill="#38bdf8"/>
+          <rect x="189" y="0" width="22" height="10" rx="2" fill="#f8fafc"/>
+        </g>
       </g>
     </g>
 
-    <!-- Bottom Prompt -->
-    <text x="0" y="235">
-      <tspan class="prompt">spideydotjs@arch</tspan><tspan class="gray">:</tspan><tspan class="prompt">~</tspan><tspan class="gray">$</tspan><tspan class="cmd"> </tspan><tspan class="cursor">█</tspan>
+    <!-- Bottom Prompt with interactive cursor -->
+    <text x="0" y="244">
+      <tspan fill="#38bdf8" font-weight="bold">spideydotjs</tspan><tspan fill="#64748b">@</tspan><tspan fill="#818cf8" font-weight="bold">arch</tspan> <tspan fill="#34d399">~</tspan> <tspan fill="#64748b">$</tspan> <tspan fill="#f1f5f9">echo "Architect it right. Ship it fast."</tspan>
+      <tspan fill="#38bdf8">█<animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/></tspan>
     </text>
   </g>
 </svg>
