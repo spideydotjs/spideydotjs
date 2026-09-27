@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="sonusid1325.png" width="115" style="border-radius: 50%;" alt="Firoj Siddiquie" />
+<img src="https://github.com/spideydotjs.png" width="115" style="border-radius: 50%;" alt="Firoj Siddiquie" />
 
 # Firoj Siddiquie · ソヌ
 
